@@ -10,7 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.example.demo.Language;
+import com.example.demo.domain.Language;
 
 @Mapper
 public interface LanguageMapper {

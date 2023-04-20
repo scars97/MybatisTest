@@ -1,14 +1,20 @@
-package com.example.demo;
+package com.example.demo.domain;
 
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 public class Language {
 
 	private Integer langId;
 	private String name;
-	private LocalDateTime update;
+	private Timestamp update;
 	
-	public Language(Integer langId, String name, LocalDateTime update) {
+	public Language(String name, Timestamp update) {
+		this.name = name;
+		this.update = update;
+	}
+	
+	public Language(Integer langId, String name, Timestamp update) {
 		super();
 		this.langId = langId;
 		this.name = name;
@@ -31,11 +37,11 @@ public class Language {
 		this.name = name;
 	}
 
-	public LocalDateTime getUpdate() {
+	public Timestamp getUpdate() {
 		return update;
 	}
 
-	public void setUpdate(LocalDateTime update) {
+	public void setUpdate(Timestamp update) {
 		this.update = update;
 	}
 	

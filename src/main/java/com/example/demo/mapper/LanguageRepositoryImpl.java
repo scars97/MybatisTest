@@ -23,13 +23,14 @@ public class LanguageRepositoryImpl implements LanguageRepository{
 	}
 
 	@Override
-	public void update(Integer langId, String name, Timestamp update) {
-		mapper.update(langId, name, update);
+	public Language update(Language language) {
+		return mapper.update(language);
+		
 	}
 
 	@Override
-	public Optional<Language> findById(Integer langId) {
-		return mapper.findById(langId);
+	public Optional<Language> findById(Integer languageId) {
+		return mapper.findById(languageId);
 	}
 
 	@Override
@@ -38,8 +39,8 @@ public class LanguageRepositoryImpl implements LanguageRepository{
 	}
 
 	@Override
-	public void delete(Integer langId) {
-		mapper.delete(langId);
+	public void delete(Integer languageId) {
+		mapper.delete(languageId);
 	}
 
 }

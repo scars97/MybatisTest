@@ -10,7 +10,7 @@ public interface LanguageService {
 
 	Language save(Language language);
 
-	void update(Integer langId, String name, Timestamp update);
+	Language update(Language language);
 
 	Optional<Language> findById(Integer langId);
 

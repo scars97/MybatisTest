@@ -4,21 +4,21 @@
  
 <mapper namespace="com.example.demo.mapper.LanguageMapper2">
 
-	<insert id="save" useGeneratedKeys="true" keyProperty="langId">
+	<insert id="save" useGeneratedKeys="true" keyProperty="languageId">
 		insert into language (name,last_update)
-		values (#{name},#{update})
+		values (#{name},#{lastUpdate})
 	</insert>
 	
 	<update id="update">
 		update language
-		set name=#{name}, last_update=#{update}
-		where language_id=#{langId}
+		set name=#{name}, last_update=#{lastUpdate}
+		where language_id=#{languageId}
 	</update>
 	
 	<select id="findById" resultType="Language">
 		select *
 		from language
-		where language_id=#{langId}
+		where language_id=#{languageId}
 	</select>
 	
 	<select id="findAll" resultType="Language">
@@ -29,6 +29,6 @@
 	<delete id="delete">
 		delete 
 		from language 
-		where language_id=#{langId}
+		where language_id=#{languageId}
 	</delete>
 </mapper>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,8 +29,8 @@ public class LanguageController {
 	private final LanguageService languageService;
 	
 	@GetMapping("/{id}")
-	public Optional<Language> getLangs(@PathVariable("id") Integer id) {
-		return languageService.findById(id);
+	public Optional<Language> getLangs(@PathVariable("id") Integer languageId) {
+		return languageService.findById(languageId);
 	}
 	
 	@GetMapping("/all")
@@ -37,21 +38,30 @@ public class LanguageController {
 		return languageService.findAll();
 	}
 	
-	@PutMapping("/")
-	public void putLanguage(@RequestParam("name") String name) {
-		Language language = new Language(name, Timestamp.valueOf(LocalDateTime.now()));
+	@PostMapping
+	public Language create(@RequestBody Language language) {
+//		language = new Language(language.getName());
+		language = Language.builder()
+					.name(language.getName())
+					.build();
+		
 		languageService.save(language);
+		return language;
 	}
 	
-	@PostMapping("/")
-	public void postLanguage(@RequestParam("langId") Integer langId,
-			@RequestParam("name") String name) {
-		languageService.update(langId, name, Timestamp.valueOf(LocalDateTime.now()));
+	@PutMapping("/{id}")
+	public Language update(@PathVariable("id") Integer languageId,
+			@RequestBody Language language) {
 		
+		language = Language.builder()
+				.name(language.getName())
+				.build();
+		return languageService.update(language);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteLanguage(@PathVariable("id") Integer langId) {
-		languageService.delete(langId);
+	public String deleteLanguage(@PathVariable("id") Integer languageId) {
+		languageService.delete(languageId);
+		return "정상적으로 삭제되었습니다";
 	}
 }

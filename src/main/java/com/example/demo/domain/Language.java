@@ -3,46 +3,30 @@ package com.example.demo.domain;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Language {
 
-	private Integer langId;
+	private Integer languageId;
 	private String name;
-	private Timestamp update;
+	private Timestamp lastUpdate;
 	
-	public Language(String name, Timestamp update) {
-		this.name = name;
-		this.update = update;
-	}
+	@Builder
+    public Language(String name) {
+        this.name = name;
+        this.lastUpdate = Timestamp.valueOf(LocalDateTime.now());
+    }
 	
-	public Language(Integer langId, String name, Timestamp update) {
-		super();
-		this.langId = langId;
-		this.name = name;
-		this.update = update;
-	}
-
-	public Integer getId() {
-		return langId;
-	}
-
-	public void setId(Integer langId) {
-		this.langId = langId;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public Timestamp getUpdate() {
-		return update;
-	}
-
-	public void setUpdate(Timestamp update) {
-		this.update = update;
-	}
-	
+	@Builder
+    public Language(Integer languageId, String name) {
+		this.languageId = languageId;
+        this.name = name;
+        this.lastUpdate = Timestamp.valueOf(LocalDateTime.now());
+    }
 }

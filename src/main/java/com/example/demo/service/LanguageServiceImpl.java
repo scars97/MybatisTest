@@ -23,14 +23,14 @@ public class LanguageServiceImpl implements LanguageService{
 	}
 
 	@Override
-	public void update(Integer langId, String name, Timestamp update) {
-		languageRepository.update(langId, name, update);
-		
+	public Language update(Language language) {
+		return languageRepository.update(language);
+	 
 	}
 
 	@Override
-	public Optional<Language> findById(Integer langId) {
-		return languageRepository.findById(langId);
+	public Optional<Language> findById(Integer languageId) {
+		return languageRepository.findById(languageId);
 	}
 
 	@Override
@@ -39,8 +39,8 @@ public class LanguageServiceImpl implements LanguageService{
 	}
 
 	@Override
-	public void delete(Integer langId) {
-		languageRepository.delete(langId);
+	public void delete(Integer languageId) {
+		languageRepository.delete(languageId);
 	}
 
 }

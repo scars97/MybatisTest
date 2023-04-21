@@ -14,9 +14,7 @@ public interface LanguageMapper2 {
 
 	void save(Language language);
 	
-	void update(@Param("langId") Integer langId, 
-			@Param("name") String name,
-			@Param("update") Timestamp update);
+	Language update(Language language);
 	
 	Optional<Language> findById(Integer langId);
 	
